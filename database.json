@@ -1,0 +1,17 @@
+{
+    "defaultEnv": {"ENV": "BOILER_NODE_ENV"},
+    "development": {
+        "ENV": "DATABASE_DEV_STRING"
+    },
+    "test":{
+        "ENV": "DATABASE_TEST_STRING"
+    },
+    "production":{
+        "ENV": "DATABASE_PROD_STRING"
+    },
+    "staging":{
+        "ENV": "DATABASE_STAGING_STRING" 
+    },
+    "sql-file": true,
+	"migrations-dir": "./database/migrations"
+  }
