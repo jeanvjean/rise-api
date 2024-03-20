@@ -19,7 +19,7 @@
         "lint": "eslint --ext .ts,.json --max-warnings=0 src",
         "test": "cross-env BOILER_NODE_ENV=test BOILER_DEV_PORT=9100 nyc --reporter=lcov --reporter=text --reporter=text-summary mocha -r ts-node/register -r tsconfig-paths/register src/test/index.ts --exit",
         "test:unit": "cross-env BOILER_NODE_ENV=test BOILER_DEV_PORT=9100 nyc --reporter=lcov --reporter=text --reporter=text-summary mocha -r ts-node/register -r tsconfig-paths/register --grep @unit src/test/unit/index.ts --exit",
-        "build": "rm -rf ./dist && npx tsc && npm i --only=prod",
+        "build": "rm -rf ./dist && npx tsc && npm i",
         "docs": "node_modules/.bin/jsdoc -c jsdoc.json",
         "pretest": "cross-env BOILER_NODE_ENV=test npm run migrate:fresh"
     },
