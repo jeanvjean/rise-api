@@ -8,7 +8,8 @@ class UserService {
   }
 
   public async getUser(data: object) {
-    return await DatabaseQueryRunner.singleTransaction(UserQueries.getUser, data);
+    const response = await DatabaseQueryRunner.singleTransaction(UserQueries.getUser, data);
+    return response;
   }
 
   public async getUsers(data: object) {

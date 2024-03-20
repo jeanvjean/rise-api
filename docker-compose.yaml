@@ -1,0 +1,24 @@
+services: 
+  # db:
+  #   container_name: database_container
+  #   image: postgres
+  #   restart: always
+  #   volumes:
+  #     - ./pg_data:/var/lib/postgresql/data
+
+  # # API services
+  api: 
+    build: ./
+    ports: 
+      - 3300:3300
+    volumes:
+      - .:/usr/src/app
+    environment:
+      NODE_ENV: 'development'
+      DEV_PORT: 3300
+      DATABASE_DEV_STRING: 'postgres://postgres:root@0.0.0.0:5432/rise-dev-db'
+      DEV_PAPERTRAIL_HOST: 'logs4.papertrailapp.com'
+      DEV_PAPERTRAIL_PORT: 36518
+      JWT_SECRET: 'somerandomekeynumberalpha'
+    # depends_on: 
+    #   - db

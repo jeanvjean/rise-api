@@ -16,12 +16,13 @@ export default {
 
   getUser: `
     SELECT 
+      id,
       first_name, 
       last_name,
       email, 
       password
     FROM users 
-    WHERE email = $/email/ 
+    WHERE email = $/email/ OR id = $/id/
     LIMIT 1
     `,
 

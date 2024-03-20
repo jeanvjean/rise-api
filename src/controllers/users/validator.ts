@@ -49,4 +49,18 @@ export default class UserValidator extends Ctrl {
         .withMessage('Password must be at least six(6) character long and most contain at least 1 letter, 1 number and 1 special character')
     ];
   }
+
+  static validateLoginSchema(): ValidationChain[] {
+    return [
+      check('email')
+        .exists()
+        .withMessage('email is required'),
+      check('password')
+        .exists()
+        .withMessage('Password is required')
+        .isLength({min: 6})
+        .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/)
+        .withMessage('Password must be at least six(6) character long and most contain at least 1 letter, 1 number and 1 special character')
+    ];
+  }
 }

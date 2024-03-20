@@ -5,7 +5,7 @@ import env from "./env"
  * @category Configurations
  */
 class App {
-	public static appName = 'boiler'
+	public static appName = 'rise'
 
 	public static port = parseInt(`${env?.PORT}` || '3200')
 
