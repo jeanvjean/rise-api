@@ -18,7 +18,7 @@ services:
     environment:
       NODE_ENV: 'development'
       DEV_PORT: 3300
-      DATABASE_DEV_STRING: 'postgres://postgres:@rise_database_container:5432/rise-dev-db'
+      DATABASE_DEV_STRING: 'postgres://jeanvaljean:S0aIfZjRMvM4htoff7B0EW0d3xtJp5Z5@dpg-cntk86v109ks73b6l7m0-a:5432/rise_db'
       DEV_PAPERTRAIL_HOST: 'logs4.papertrailapp.com'
       DEV_PAPERTRAIL_PORT: 36518
       JWT_SECRET: 'somerandomekeynumberalpha'
