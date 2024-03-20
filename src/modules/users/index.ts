@@ -6,16 +6,10 @@ export type userPropInterface = {
   service: UserService;
 }
 
-type UserResponse = {
-    data: UserInterface;
-    status: string;
-}
-
-interface userResponseQueryInterface {
+interface UserResponseQueryInterface {
   page: string;
   per_page: string;
 }
-
 
 class userModule extends Module {
     private service: UserService;
@@ -42,7 +36,7 @@ class userModule extends Module {
       }
     }
 
-    public async getUsers(data: userResponseQueryInterface): Promise<UserInterface[] | undefined> {
+    public async getUsers(data: UserResponseQueryInterface): Promise<UserInterface[] | undefined> {
       try {
         const { page, per_page } = data;
         const users = await this.service.getUsers({

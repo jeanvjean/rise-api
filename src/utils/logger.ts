@@ -17,7 +17,7 @@ const level = () => {
 }
 
 const papertrailConnection = new PapertrailConnection({
-  host: `${env?.PAPERTRAIL_HOST}`.split('\r')[0],
+  host: `${env?.PAPERTRAIL_HOST as string}`.split('\r')[0],
   port: env?.PAPERTRAIL_PORT,
   hostname: 'boiler_ts',
   level: 'debug',

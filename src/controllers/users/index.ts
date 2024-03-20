@@ -2,8 +2,8 @@ import { UserInterface } from './../../modules/interfaces/interface.users';
 import {Response, Request, RequestHandler} from 'express';
 import Ctrl from '../ctrl';
 import User from '../../modules/users';
-import enums from '@src/configs/enums';
-import { user } from '@src/modules';
+import enums from '../../configs/enums';
+import { user } from '../../modules';
 
 const UserModule = user
 
@@ -32,6 +32,19 @@ class UserController extends Ctrl {
           // @ts-ignore
           const data: UserInterface[] | undefined = await UserModule.getUsers(req.query);
           this.ok(res, enums.RESOURCE_FETCHED('users'), data);
+        } catch (error) {
+          // @ts-ignore
+          this.handleError(error, req, res);
+        }
+      }
+    }
+
+    login(): RequestHandler {
+      return async(req: Request, res: Response) => {
+        try {
+          // @ts-ignore
+          const { user, token } = req;
+          this.ok(res, 'login successfull', { ...user, token });
         } catch (error) {
           // @ts-ignore
           this.handleError(error, req, res);

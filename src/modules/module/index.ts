@@ -1,4 +1,4 @@
-import { BadInputFormatException } from "@src/exceptions";
+import { BadInputFormatException } from "../../exceptions";
 
 /**
  * Base model class

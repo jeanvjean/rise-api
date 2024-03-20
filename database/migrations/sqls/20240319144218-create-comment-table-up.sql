@@ -1,18 +1,18 @@
 /* Replace with your SQL commands */
+
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
-CREATE TABLE users(
-    id VARCHAR PRIMARY KEY DEFAULT 'user-' || LOWER(
+CREATE TABLE comments(
+    id VARCHAR PRIMARY KEY DEFAULT 'comment-' || LOWER(
         REPLACE(
             CAST(uuid_generate_v1mc() As varchar(50))
             , '-','')
         ),
-    first_name VARCHAR(50) NOT NULL,
-    last_name VARCHAR(50) NOT NULL,
-    email VARCHAR(50) NOT NULL,
-    password VARCHAR(100) NOT NULL,
+    content VARCHAR(1000) NOT NULL,
+    post_id VARCHAR(50) REFERENCES posts(id) ON DELETE CASCADE,
     created_at TIMESTAMPTZ DEFAULT NOW(),
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
-CREATE INDEX IF NOT EXISTS uid_index ON users(id);
+CREATE INDEX IF NOT EXISTS comment_cid_index ON comments(id);
+

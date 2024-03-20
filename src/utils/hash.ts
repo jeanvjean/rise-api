@@ -1,4 +1,5 @@
 import {verify, sign} from 'jsonwebtoken';
+import { genSaltSync, hashSync, compareSync } from 'bcrypt';
 
 export type hashUserPayload = {
   email: string,
@@ -21,4 +22,18 @@ export const verifyToken = async (token: string) =>{
   } catch (error) {
     console.log(error);
   }
+};
+
+export const hash = async(data: string) => {
+  const salt = genSaltSync(10);
+  const hashed = hashSync(data, salt);
+  if (hashed && salt) {
+    return { hashed, salt };
+  }
+  return false;
+}
+
+export const compareData = (data: string, hashed: string) => {
+  const isValid = compareSync(data, hashed);
+  return !!isValid;
 };
