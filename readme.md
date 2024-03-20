@@ -7,7 +7,4 @@ npm: run test === to run the test files
 <================================================>
 
 [Postman Document]: https://documenter.getpostman.com/view/19282928/2sA358c5dP
-[url]: https://
-
-
-<!-- http://localhost:3100/api/v1/posts -->
+[url]: https://rise-api-3ib9.onrender.com

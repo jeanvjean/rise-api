@@ -34,9 +34,7 @@ export default class DriverMiddleware extends Ctrl {
       try {
         const {body} = req;
         const payload: string = body.email;
-        console.log({ payload });
         const user: UserInterface = await serviceModule.getUser({ email: payload, id: null });
-        console.log({ user });
         if (user && type === 'create') {
           return this.errorResponse(req, res, enums.HTTP_BAD_REQUEST, enums.RESOURCE_EXISTS('user'));
         }
