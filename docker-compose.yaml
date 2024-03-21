@@ -1,12 +1,13 @@
+version: "3.8"
 services: 
   db:
-    container_name: rise_database_container
-    image: postgres
-    restart: always
+    image: postgres:10-alpine
     environment:
-      - POSTGRES_HOST_AUTH_METHOD=trust
-    volumes:
-      - ./pg_data:/var/lib/postgresql/data
+      - POSTGRES_DB=rise-dev-db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=supersecretpassword
+    container_name: rise_database_container
+    restart: always
 
   # # API services
   api: 
@@ -14,13 +15,16 @@ services:
     ports: 
       - 3300:3300
     volumes:
-      - .:/usr/src/app
+      - .:/app
+      - /app/node_modules
+
     environment:
       NODE_ENV: 'development'
       DEV_PORT: 3300
-      DATABASE_DEV_STRING: 'postgres://jeanvaljean:S0aIfZjRMvM4htoff7B0EW0d3xtJp5Z5@dpg-cntk86v109ks73b6l7m0-a:5432/rise_db'
+      DATABASE_DEV_STRING: 'postgres://postgres:supersecretpassword@db:5432/rise-dev-db'
       DEV_PAPERTRAIL_HOST: 'logs4.papertrailapp.com'
       DEV_PAPERTRAIL_PORT: 36518
       JWT_SECRET: 'somerandomekeynumberalpha'
+    container_name: api
     depends_on: 
       - db
