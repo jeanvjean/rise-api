@@ -11,7 +11,7 @@ services:
 
   # # API services
   api: 
-    build: ./
+    image: rise
     ports: 
       - 3300:3300
     volumes:

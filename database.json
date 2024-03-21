@@ -1,5 +1,5 @@
 {
-    "defaultEnv": {"ENV": "BOILER_NODE_ENV"},
+    "defaultEnv": {"ENV": "NODE_ENV"},
     "development": {
         "ENV": "DATABASE_DEV_STRING"
     },

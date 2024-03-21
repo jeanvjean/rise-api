@@ -12,3 +12,4 @@ Procfile
 package-lock.json
 logs/
 coverage
+pg_data
